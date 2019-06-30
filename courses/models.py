@@ -21,7 +21,7 @@ class Contacts(models.Model):
         (facebook, 'FACEBOOK'),
         (email, 'EMAIL')
     ]
-    # name = models.ForeignKey(ContactsType, on_delete=models.CASCADE, default='')
+
     type = models.CharField(max_length=12, choices=contact_choices, default='')
     value = models.CharField(max_length=512)
     cours = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name='contacts', default='')

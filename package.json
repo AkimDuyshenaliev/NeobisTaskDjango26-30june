@@ -2,7 +2,7 @@
   "name": "courses",
   "version": "1.0.0",
   "description": "Well, not actualy a disctiption, I just needed to add this, that's all",
-  "main": "manage.py",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

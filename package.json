@@ -1,0 +1,19 @@
+{
+  "name": "courses",
+  "version": "1.0.0",
+  "description": "Well, not actualy a disctiption, I just needed to add this, that's all",
+  "main": "manage.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkimDuyshenaliev/NeobisTaskDjango26-30june.git"
+  },
+  "author": "AkimC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkimDuyshenaliev/NeobisTaskDjango26-30june/issues"
+  },
+  "homepage": "https://github.com/AkimDuyshenaliev/NeobisTaskDjango26-30june#readme"
+}

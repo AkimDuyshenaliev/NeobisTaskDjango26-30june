@@ -14,8 +14,4 @@ python-decouple==3.1
 pytz==2019.1  
 sqlparse==0.3.0 
 
-<<<<<<< HEAD
-[Aliray documentary](https://app.apiary.io/neobis13julytask/editor )  
-=======
 [Aliray documentary](https://app.apiary.io/neobis13julytask/editor )
->>>>>>> 2a1e0e63c43fa0123fa2d851536b11ef28f146d3

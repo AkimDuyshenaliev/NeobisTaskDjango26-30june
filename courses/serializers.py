@@ -25,7 +25,7 @@ class CoursesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Courses
-        fields = ['id', 'name', 'discription',
+        fields = ['id', 'name', 'description',
                   'category', 'logo', 'contacts', 'branches']
 
     def create(self, validated_data):

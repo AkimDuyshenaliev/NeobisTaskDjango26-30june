@@ -3,7 +3,7 @@ from django.db import models
 
 class Courses(models.Model):
     name = models.CharField(max_length=80)
-    description = models.CharField(max_length=240)
+    discription = models.CharField(max_length=240)
     # logo = models.ImageField(default='default.jpg', upload_to='logos')
     logo = models.CharField(max_length=128)
 

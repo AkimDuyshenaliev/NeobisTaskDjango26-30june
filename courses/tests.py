@@ -3,6 +3,8 @@ import random
 from django.test import TestCase, Client
 from django.urls import reverse
 from rest_framework.test import APIClient
+from rest_framework import status
+from rest_framework.response import Response
 from .models import *
 from .serializers import *
 
@@ -10,7 +12,19 @@ client = Client()
 
 class CategoryTestModule(TestCase):
     def setUp(self):
-        pass
+        self.course = Courses.objects.create(
+            name='Name', discription='discription', logo='default.jpg')
+
+        self.category = Category.objects.create(name='Name', imgpath='image path', cours=self.course)
+
+    def TestCategory(self):
+        Category_get = Category.objects.get(
+            name='Name', imgpath='image path', cours=self.course)
+        self.assertEqual(Category_get, self.category)
+
+    def testCategoryStatusCode(self):
+        return Response(self.category, status=status.HTTP_201_CREATED)
+
 
 class ContactTestModule(TestCase):
 
@@ -29,6 +43,9 @@ class ContactTestModule(TestCase):
             
         self.assertEqual(Contact_get, self.contacts)
 
+    def testContactsStatusCode(self):
+        return Response(self.contacts, status=status.HTTP_201_CREATED)
+
 
 class BranchesTestModule(TestCase):
 
@@ -45,6 +62,9 @@ class BranchesTestModule(TestCase):
             address='Brandon str', latitude=78.1868, longitude=54.1861, cours=self.course)
         self.assertEqual(Branches_get, self.branches)
 
+    def testBranchesStatusCode(self):
+        return Response(self.branches, status=status.HTTP_201_CREATED)
+
 
 class CoursesTestModule(TestCase):
 
@@ -58,6 +78,9 @@ class CoursesTestModule(TestCase):
             name='Name', discription='discription', logo='default.jpg')
         self.assertEqual(Courses_get, self.courses)
 
+    def testCoursesStatusCode(self):
+        return Response(self.courses, status=status.HTTP_201_CREATED)
+
 
 class ViewsTest(TestCase):
     def test_views(self):
@@ -67,12 +90,12 @@ class ViewsTest(TestCase):
         self.all_pages = ['', 'courses/', 'category/', 'contacts/', 'branches/']
         for self.page in self.all_pages:
             _path = 'http://127.0.0.1:8000/' + self.page
-            self.response = client.get(path=_path)
-            print('Response status code : ' + str(self.response.status_code))
+            self.url_response = client.get(path=_path)
+            print('Response status code : ' + str(self.url_response.status_code))
             try:
-                self.assertEqual(self.response.status_code, 200)
+                self.assertEqual(self.url_response.status_code, 200)
             except:
-                print('There is something wrong, the response status is : ' + self.response.status_code)
+                print('There is something wrong, the response status is : ' + self.url_response.status_code)
                 break
 
         

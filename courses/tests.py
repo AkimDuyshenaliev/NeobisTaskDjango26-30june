@@ -104,18 +104,22 @@ class ViewsTest(TestCase):
 class SerializersTest(TestCase):
 
     def setUp(self):
-        self.types = ['PHONE', 'FACEBOOK', 'EMAIL']
-        self.values = ['+996558054593', '@someone', 'akim.duyshenaliev@gmail.com']
-        self.randomValue = random.randint(0, len(self.values))
+
+        # self.types = ['PHONE', 'FACEBOOK', 'EMAIL']
+        # self.values = ['+996558054593', '@someone', 'akim.duyshenaliev@gmail.com']
+        # self.randomValue = random.randint(0, len(self.values))
+        # self.type = self.types[self.randomValue - 1]
+        # self.value = self.values[self.randomValue - 1]
+
+        self.type = 'PHONE'
+        self.value = '+996558054593'
         self.contact = 1
-        self.value = self.values[self.randomValue - 1]
-        self.type = self.types[self.randomValue - 1]
         self.category = 1
         self.id = None
 
+        self.address = 'That\'s a god samned address field.'
         self.latitude = '75.24462'
         self.longitude = '45.21657'
-        self.address = 'That\'s a god samned address field.'
 
         self.name = 'English sth'
         self.discription = 'That\'s a fricking discription, deal with it!'
@@ -131,9 +135,9 @@ class SerializersTest(TestCase):
 
     def test_contacts_serializer(self):
         expected_values = {
-            'id': self.id,
-            'type': self.type,
-            'value': self.value
+            'id': None,
+            'type': 'PHONE',
+            'value': '+996558054593'
         }
 
         contact = Contacts(
@@ -145,10 +149,10 @@ class SerializersTest(TestCase):
 
     def test_branches_serializer(self):
         expected_values = {
-            'id': self.id, 
-            'address': self.address, 
-            'latitude': self.latitude, 
-            'longitude': self.longitude
+            'id': None, 
+            'address': 'That\'s a god samned address field.',
+            'latitude': '75.24462',
+            'longitude': '45.21657'
         }
 
         branch = Branches(cours=self.course, address=self.address,
@@ -163,9 +167,9 @@ class SerializersTest(TestCase):
         expected_values = {
             "id": None,
             'category': [],
-            'name': self.name,
-            'discription': self.discription,
-            'logo': self.logo,
+            'name': 'English sth',
+            'discription': 'That\'s a fricking discription, deal with it!',
+            'logo': 'This is suppose to be a path to the image but oh well',
             'contacts': [],
             'branches': [],
 

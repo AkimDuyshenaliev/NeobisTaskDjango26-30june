@@ -14,7 +14,6 @@ import os
 import dj_database_url
 from decouple import config, Csv
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
 os.environ['DJANGO_SETTINGS_MODULE'] = 'api.settings'
 
 
@@ -83,17 +82,6 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'courses',
-#         'USER': 'postgres',
-#         'PASSWORD': config('PASSWORD'),
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432'
-#     }
-# }
 
 DATABASES = {
     'default': dj_database_url.config(

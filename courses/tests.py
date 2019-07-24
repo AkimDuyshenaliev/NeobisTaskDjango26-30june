@@ -147,6 +147,8 @@ class SerializersTest(TestCase):
 
         self.assertEqual(expected_values, serializer.data)
 
+        self.assertEqual(serializer.status_code, 201)
+
     def test_branches_serializer(self):
         expected_values = {
             'id': None, 
@@ -160,7 +162,7 @@ class SerializersTest(TestCase):
 
         serializer = BranchesSerializer(branch)
 
-        self.assertEqual(expected_values, serializer.data)
+        Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def test_courses_and_create(self):
 

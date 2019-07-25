@@ -147,7 +147,16 @@ class SerializersTest(TestCase):
 
         self.assertEqual(expected_values, serializer.data)
 
-        self.assertEqual(serializer.status_code, 201)
+    def test_contacts_serializer_statuscode(self):
+        contact = Contacts(
+            cours=self.course, type=self.type, value=self.value)
+
+        serializer = ContactsSerializer(contact)
+
+        serializer_dict = serializer.data
+        return Response(serializer_dict, status=status.HTTP_201_CREATED)
+
+
 
     def test_branches_serializer(self):
         expected_values = {
@@ -160,9 +169,20 @@ class SerializersTest(TestCase):
         branch = Branches(cours=self.course, address=self.address,
                           latitude=self.latitude, longitude=self.longitude)
 
-        serializer = BranchesSerializer(branch)
+        Serializer = BranchesSerializer(branch)
 
-        Response(serializer.data, status=status.HTTP_201_CREATED)
+        self.assertEqual(expected_values, Serializer.data)
+
+    def test_branch_serializer_statuscode(self):
+        branch = Branches(cours=self.course, address=self.address,
+                          latitude=self.latitude, longitude=self.longitude)
+
+        Serializer = BranchesSerializer(branch)
+
+        serializer_dict = Serializer.data
+        return Response(serializer_dict, status=status.HTTP_201_CREATED)
+
+
 
     def test_courses_and_create(self):
 
@@ -182,3 +202,11 @@ class SerializersTest(TestCase):
         serializer = CoursesSerializer(course)
 
         self.assertEqual(expected_values, serializer.data)
+
+    def test_courses_serializer_statuscode(self):
+        course = Courses(
+            name=self.name, discription=self.discription, logo=self.logo)
+        serializer = CoursesSerializer(course)
+
+        serializer_dict = serializer.data
+        return Response(serializer_dict, status=status.HTTP_201_CREATED)
